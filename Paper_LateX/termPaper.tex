@@ -1,0 +1,146 @@
+\documentclass[12pt,a4paper]{article}
+
+% Encoding and fonts
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% Page layout
+\usepackage{geometry}
+\geometry{
+    a4paper,
+    top=25mm,
+    bottom=25mm,
+    left=25mm,
+    right=25mm
+}
+
+% Line spacing
+\usepackage{setspace}
+\setstretch{1.15}
+
+% Figures and tables
+\usepackage{graphicx}
+\usepackage{float}
+
+% Mathematics
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+% Theorem formatting
+\newtheoremstyle{style}
+    {0.5cm}
+    {-0.8cm}
+    {}
+    {}
+    {\normalfont\bfseries}
+    {}
+    { }
+    {\thmname{#1}\thmnumber{ #2}}
+
+\theoremstyle{style}
+\newtheorem{example}{Example}[section]
+\newtheorem{formula}{Formula}[section]
+
+% References
+\usepackage{natbib}
+
+% Captions
+\usepackage{caption}
+\captionsetup{
+    font=small,
+    labelfont=bf,
+    labelsep=period,
+    justification=centering
+}
+
+% Table of contents depth
+\setcounter{tocdepth}{3}
+
+% Horizontal rule command
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+% Paragraph formatting
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.8em}
+
+% Hyperlinks
+\usepackage[hidelinks]{hyperref}
+
+
+\begin{document}
+
+
+% Title page
+\input{title}
+
+\thispagestyle{empty}
+
+
+% Abstract
+\clearpage
+
+\begin{center}
+    {\Large\bfseries Abstract}
+\end{center}
+
+\vspace{1cm}
+
+\begin{singlespace}
+
+Social media platforms increasingly use algorithmic ranking and recommendation systems to determine which content users encounter and how they interact with it. While these systems are designed to personalize experiences, they may also contribute to differences in the information environments and discussion spaces experienced by different users. Understanding the mechanisms behind these differences is essential for assessing the effects of personalization on online discourse.
+
+This research investigates the factors that contribute to divergence in social media interactions, focusing on discussions around polarized topics. The study uses data collected from controlled user profiles with different demographic and ideological characteristics to examine how variations between users are reflected in their exposure patterns, engagement behaviours, and interactions with opposing viewpoints.
+
+A combination of exploratory analysis, feature engineering, and statistical modelling is employed to identify the characteristics associated with divergent user experiences. The analysis evaluates the influence of content properties, temporal dynamics, engagement signals, and user-level attributes on measures of interaction divergence. Regression models are used to quantify the relationship between these factors and differences observed across user profiles.
+
+The results provide a data-driven examination of how personalization mechanisms and user characteristics shape online interaction environments. By identifying the factors associated with divergent experiences, this study contributes to the understanding of algorithmic influence, information exposure, and polarization dynamics in social media platforms.
+
+\end{singlespace}
+
+
+% Table of contents
+\clearpage
+
+\thispagestyle{empty}
+
+\tableofcontents
+
+
+% Main document
+\clearpage
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+
+\input{introduction}
+
+\clearpage
+
+\input{data_scraping}
+
+\clearpage
+
+\input{user_difference_analysis}
+
+\clearpage
+
+\input{feature_engineering}
+
+\clearpage
+
+\input{analysis_methodology}
+
+
+% References
+\clearpage
+
+\section*{References}
+\addcontentsline{toc}{section}{References}
+
+\bibliographystyle{apalike}
+\bibliography{references}
+
+\end{document}

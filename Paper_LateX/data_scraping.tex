@@ -1,0 +1,29 @@
+\section{Data Collection Methodology}
+
+\subsection{Scraping Process}
+
+Data collection followed a two-stage approach: (1) Selenium-based hashtag exploration to identify relevant Instagram posts across ideological categories, and (2) automated comment extraction using \texttt{instagram\_comment\_scraper.py} with session persistence and resumable operation.
+
+\subsection{Comment Extraction}
+
+The scraper collected post metadata, including URL, timestamp, verification status, total likes, and comment count. At the comment level, it extracted usernames, comment text, like counts, reply counts, and verification status. The system used cookie persistence, SQLite tracking, rate limiting, and scroll-based loading to reliably retrieve dynamically loaded comments.
+
+\subsection{Dataset Composition}
+
+The final dataset contained 3,672 posts, with 612 posts collected from each of the six target categories. This balanced distribution enables comparative analysis across demographic and ideological groups.
+
+\subsection{Rate Limiting and Anti-Detection Measures}
+
+To improve reliability and minimize excessive requests, the scraper used randomized delays, human-like login behaviour, configurable scrolling limits, and cookie-based session reuse.
+
+\subsection{Data Quality Considerations}
+Several measures were implemented to ensure the consistency and reliability of the collected dataset. GIF comment verification was performed, as Instagram generates temporary session-specific parameters and expiration timestamps within GIF URLs, causing the same GIF content to appear under different links across requests or page loads. Therefore, GIF comments were identified using additional extracted metadata, including username, like count, and reply information, rather than relying solely on URL comparison. Furthermore, schema-based validation, engagement value standardization, error logging, and reliable storage mechanisms were implemented to maintain data integrity and prevent data loss during interruptions.
+
+
+\subsection{Ethical Considerations and Data Collection Challenges}
+
+The data collection process followed responsible social media research practices by using only publicly available information, applying rate-limiting measures, minimizing unnecessary requests through session persistence, and avoiding repeated scraping through database tracking.
+
+Several technical challenges were encountered during implementation. Instagram interface changes affected selector reliability, requiring adaptive selectors and fallback methods. Platform restrictions, including rate limits and access blocks, were managed through controlled requests and proxy rotation. Additionally, Instagram's dynamic comment loading introduced variability in extraction results. Since comments are loaded progressively during scrolling, proxy speed, network conditions, and execution time influenced the number of comments collected from each post. This was addressed through resumable scraping and incremental data collection across multiple sessions.
+
+Despite these challenges, the implemented approach enabled the successful collection of a structured dataset for analysing Instagram comment patterns.

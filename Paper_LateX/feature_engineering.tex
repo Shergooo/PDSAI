@@ -1,0 +1,28 @@
+\section{Feature Engineering}
+
+\subsection{Dataset Construction}
+
+The dataset was constructed from 612 posts shared across six user categories. All possible category pairs were generated for each post, resulting in:
+
+\[
+\binom{6}{2}=15
+\]
+
+pairwise interactions per post. Each observation represents a user-category pair and its corresponding divergence score, producing a final dataset of:
+
+\[
+612 \times 15 = 9,180
+\]
+
+observations.
+
+\subsection{Extracted Features}
+
+The divergence score was used as the target variable. The predictive features were grouped into four categories:
+
+\begin{itemize}
+    \item \textbf{Engagement:} \textit{post\_likes}, \textit{post\_comments}, \textit{log\_likes}, \textit{log\_comments}
+    \item \textbf{Temporal:} \textit{months\_since\_post}
+    \item \textbf{User attributes:} \textit{verified\_encoded}, \textit{gender\_match}
+    \item \textbf{Stance interactions:} eight one-hot encoded variables representing user stance-pair combinations
+\end{itemize}
